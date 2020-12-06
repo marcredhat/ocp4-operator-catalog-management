@@ -35,7 +35,7 @@ NOTE: we do this pre-req step to build the ose-operator-registry image only *onc
 
 Suppose you want to start with an Operator catalog of all of the current Red Hat Operators. You can fetch all of the "redhat-operators" category package manifests like so, to a directory named `redhat-manifests`:
 ```
-oc adm catalog build --appregistry-org=redhat-operators --manifest-dir=./redhat-manifests
+oc adm catalog build --appregistry-org=redhat-operators --manifest-dir=./redhat-manifests --from=registry.redhat.io/openshift4/ose-operator-registry:v4.3
 ```
 
 The result will be a list of directories inside the `redhat-manifests` dir, one for each operator. Each operator directory contains "package manifests", which are basically the CusterServiceVersion and CustomResourceDefinition Yaml files fo that operator. This Yaml content is all that Openshift needs to be able to install the Operator, and manage it via OLM. For more information on what CSVs and CRDs and what the Operator Lifecycle Manager workflow is, see the [official docs](https://docs.openshift.com/container-platform/4.3/operators/understanding_olm/olm-understanding-olm.html)
